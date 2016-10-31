@@ -113,8 +113,20 @@ def regres_construction(e_t_2, est_sigm, z_t, N):
     M_c_t = np.sum(c_t) / N
     for i in range(N):
         ESS.append((est_c_t[i] - M_c_t) ** 2)
-    Ess = np.sum(ESS)
-    return Ess
+    Ess = np.sum(ESS) / 2.0
+    hi = 5.99
+    a = False
+    #гетероскедастичность присутствует
+    if(Ess > hi):
+        a = True
+    else:
+        a = False
+    return a
+def test_Breusha_Pagana(x1, x2, Y, est_tetta, N):
+    e_t, est_sigm, e_t_2 = residual(Y, x1, x2, est_tetta, N)
+    z_t = Z_t(x1, x2, N)
+    ESS = regres_construction(e_t_2, est_sigm, z_t, N)
+    return ESS
 #######################################
 
 def func_2(x):
