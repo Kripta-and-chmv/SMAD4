@@ -28,6 +28,7 @@
     <Compile Include="func.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="est.txt" />
     <Content Include="sigma_x1_x2.txt" />
     <Content Include="u_y_ej_x1_x2.txt" />
     <Content Include="x1x2.txt" />
